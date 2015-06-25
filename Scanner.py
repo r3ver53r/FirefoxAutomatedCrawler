@@ -24,11 +24,11 @@ def crawl(url, Level):
    
    if url is None:
       return None
+
+   debug("Trying: "+url)
    
    #Normalize the URL
    url = normalize(url)
-   
-   debug("Trying: "+url)
    
    #Check if the URL is already crawled and under scope
    if checkURL(url, Level) == 0:
@@ -36,7 +36,7 @@ def crawl(url, Level):
 		return
    
    #Browse the url and append to the crawled url_list
-   debug("Scanning :-) : "+url)
+   debug("Scanning: "+url)
    driver.get(url)
    url_list += [url]
    
@@ -84,6 +84,7 @@ def checkURL(url, Level):
    #Check if the URL is not in the excluded list of URLs
    for myurl in excluded_urls:
       if myurl in url:
+         debug("Excluded URL: "+url)
          return 0
    
    #Check if the URL of same domain or list of domain
@@ -92,7 +93,7 @@ def checkURL(url, Level):
          valid_scope = 1
    
    if valid_scope == 0:
-      debug("Domain not in scope. Skipping!!: "+url)
+      debug("Domain not in scope: "+url)
       return 0   
    
    #Check if URL is already crawled
