@@ -25,15 +25,18 @@ def crawl(url, Level):
    if url is None:
       return None
    
-   print "Trying URL: "+str(url)
+   #Normalize the URL
+   url = normalize(url)
+   
+   debug("Trying: "+url)
    
    #Check if the URL is already crawled and under scope
    if checkURL(url, Level) == 0:
-		print "Skipping !!"
+		debug("Skipping: "+url)
 		return
    
    #Browse the url and append to the crawled url_list
-   print "Scanning :-)"
+   debug("Scanning :-) : "+url)
    driver.get(url)
    url_list += [url]
    
@@ -47,7 +50,7 @@ def crawl(url, Level):
    for tag in allTags:
       links.append( tag.get_attribute('href') )
    
-   print "Extracted links from: "+url
+   debug("Extracted links from: "+url)
    
    #Crawl the links on the url page
    for link in links:
@@ -57,10 +60,10 @@ def normalize(url):
    
    #Check for '/', '?', '#' as the last char of the URL
    if url[-1] == '/' or url[-1] == '?' or url[-1] == '#':
-      print "Normalizing: "+str(url)
       url = url[:-1]
       normalize(url)
-         
+   
+   debug("Normalized: "+str(url))   
    return url
       
 def checkURL(url, Level):
@@ -71,15 +74,12 @@ def checkURL(url, Level):
    
    #Check if MaxLevel has reached
    if(Level == 0):
-		print "Skipping..MaxLevel Reached!!"
+		debug("Skipping..MaxLevel Reached!!")
 		return 
       
    #check if URL is None
    if url is None:
       return 0
-   
-   #Normalize the URL
-   url = normalize(url)
    
    #Check if the URL is not in the excluded list of URLs
    for myurl in excluded_urls:
@@ -92,7 +92,7 @@ def checkURL(url, Level):
          valid_scope = 1
    
    if valid_scope == 0:
-      print "Domain not in scope. Skipping!!"
+      debug("Domain not in scope. Skipping!!: "+url)
       return 0   
    
    #Check if URL is already crawled
@@ -101,7 +101,9 @@ def checkURL(url, Level):
    
    return 1
 
-      
+def debug(debug_string):
+   print "DEBUG STRING >>>> "+str(debug_string)
+   
 crawl(base_url, MaxLevel)     
 print "\n\nTotal URLs:" +str(len(url_list))+"\n\n"
 print url_list
