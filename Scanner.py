@@ -28,15 +28,10 @@ def crawl(url, Level):
    print "Trying URL: "+str(url)
    
    #Check if the URL is already crawled and under scope
-   if checkURL(url) == 0:
+   if checkURL(url, Level) == 0:
 		print "Skipping !!"
 		return
    
-   #Check if MaxLevel has reached
-   if(Level == 0):
-		print "Skipping..MaxLevel Reached!!"
-		return 
-      
    #Browse the url and append to the crawled url_list
    print "Scanning :-)"
    driver.get(url)
@@ -68,12 +63,17 @@ def normalize(url):
          
    return url
       
-def checkURL(url):
+def checkURL(url, Level):
    global url_list
    global domains
    global excluded_urls
    valid_scope = 0
    
+   #Check if MaxLevel has reached
+   if(Level == 0):
+		print "Skipping..MaxLevel Reached!!"
+		return 
+      
    #check if URL is None
    if url is None:
       return 0
