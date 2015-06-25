@@ -38,6 +38,7 @@ def crawl(url, Level):
    #Browse the url and append to the crawled url_list
    debug("Scanning: "+url)
    driver.get(url)
+   debug("Scanned and added to scanned list: "+url)
    url_list += [url]
    
    #sleep for SleepTime seconds to actually let scanning happen
