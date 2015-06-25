@@ -39,7 +39,7 @@ def crawl(url, Level):
    driver.get(url)
    url_list += [url]
    
-   #sleep for 10 seconds to actually let scanning happen
+   #sleep for SleepTime seconds to actually let scanning happen
    time.sleep(SleepTime)
    
    #Get all <a href=""> tags
