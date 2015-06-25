@@ -9,12 +9,12 @@ import time
 
 MaxLevel = 5
 SleepTime= 10
-fp = webdriver.FirefoxProfile("C:/Users/labuser/AppData/Roaming/DOMinator1/Profiles/7jj85tp9.default")                 
+fp = webdriver.FirefoxProfile("E:/PenTest/FirefoxProfile")                 
 driver = webdriver.Firefox(fp) 
 url_list = []
-base_url = 'http://garage4hackers.com'
-domains  = ["http://garage4hackers.com", "http://www.garage4hackers.com"]
-excluded_urls = ["http://garage4hackers.com/login.php?do=logout"]
+base_url = 'http://coursera.org'
+domains  = ["https://coursera.org", "http://coursera.org", "https://www.coursera.org", "https://www.coursera.org"]
+excluded_urls = ["https://coursera.org/logout"]
 
 
 def crawl(url, Level):
