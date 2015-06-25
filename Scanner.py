@@ -32,7 +32,6 @@ def crawl(url, Level):
    
    #Check if the URL is already crawled and under scope
    if checkURL(url, Level) == 0:
-		debug("Skipping: "+url)
 		return
    
    #Browse the url and append to the crawled url_list
@@ -99,6 +98,7 @@ def checkURL(url, Level):
    
    #Check if URL is already crawled
    if url in url_list:
+      debug("Already scanned. Skipping: "+url)
       return 0
    
    return 1
