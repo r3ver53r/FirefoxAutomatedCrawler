@@ -1,6 +1,5 @@
 '''
 To do:
-   check for scoped domains
    check if the browser is crashed
    check if the response of a URL is 200 ok
    
