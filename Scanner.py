@@ -22,6 +22,9 @@ def crawl(url, Level):
    global SleepTime
    links = []
    
+   if url is None:
+      return None
+   
    print "Trying URL: "+str(url)
    
    #Check if the URL is already crawled and under scope
@@ -57,9 +60,6 @@ def crawl(url, Level):
 
 def normalize(url):
    
-   if url is None:
-      return None
-      
    #Check for '/', '?', '#' as the last char of the URL
    if url[-1] == '/' or url[-1] == '?' or url[-1] == '#':
       print "Normalizing: "+str(url)
