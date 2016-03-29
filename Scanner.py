@@ -1,6 +1,6 @@
 ''' 
 To do:
-   check if the browser is crashed  
+   check if the browser is crashed
    check if the response of a URL is 200 ok. 404 pages should also be checked though. Redirection check?
    Add the crawled URL to a DB
    Initialize the crawled URL list with the DB    
