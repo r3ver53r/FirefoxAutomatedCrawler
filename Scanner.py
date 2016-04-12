@@ -1,4 +1,4 @@
-''' 
+'''  
 To do:
    check if the browser is crashed 
    check if the response of a URL is 200 ok. 404 pages should also be checked though. Redirection check?
